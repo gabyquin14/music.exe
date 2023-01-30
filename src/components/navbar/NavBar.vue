@@ -32,7 +32,7 @@ export default {
       <ul>
         <li>Pokemons</li>
         <li><RouterLink :to="{ name: 'home' }">Home</RouterLink></li>
-        <li><RouterLink :to="{ name: 'about' }">About</RouterLink></li>
+        <li><RouterLink :to="{ name: 'about' }">Favorites</RouterLink></li>
         <li @click="handleLogOut" v-if="isLoggedIn">
           <RouterLink :to="{ name: 'login' }">Log out</RouterLink>
         </li>

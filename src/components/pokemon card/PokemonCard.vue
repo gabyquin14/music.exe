@@ -9,18 +9,18 @@
         <img :src="pokemonInfo?.sprites?.front_default" alt="" />
       </div>
       <div class="card-title">
-        <span>{{ pokemon?.name }}</span>
+        <span>{{ pokemonInfo?.name }}</span>
         <StarFilled
           size="26"
           currentColor="#e6b400"
           v-if="isFav"
-          @click.stop.prevent="isFav = !isFav"
+          @click.stop.prevent="removeFavPokemon"
         />
         <StarOutline
           size="26"
           currentColor="#e6b400"
           v-if="!isFav"
-          @click.stop.prevent="isFav = !isFav"
+          @click.stop.prevent="setFavPokemon"
         />
       </div>
     </div>
@@ -31,32 +31,65 @@
 import axios from "axios";
 import StarFilled from "../../assets/icons/StarFilled.vue";
 import StarOutline from "../../assets/icons/StarOutline.vue";
+import {
+  doc,
+  setDoc,
+  onSnapshot,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
+import { db, auth } from "@/firestore";
+import mixins from "@/helpers/helper.js";
+
 export default {
   components: { StarFilled, StarOutline },
-  props: ["pokemon"],
+  props: ["pokemon", "pokemonUrl"],
+  mixins: [mixins],
   data() {
     return {
       pokemonInfo: [],
       isFav: false,
       pokemonId: 0,
+      currentFavs: [],
     };
   },
   async created() {
-    this.fetchPokemonInfo();
-    this.pokemonId = this.pokemon.url.split("pokemon/");
+    await this.fetchPokemonInfo();
+    this.pokemonId = this.pokemonUrl.split("pokemon/");
     this.pokemonId = this.pokemonId[1].replace("/", "");
+
+    const docRef = doc(db, "fav-pokemon", auth.currentUser.uid);
+
+    onSnapshot(docRef, async (doc) => {
+      this.snapshots(doc.data());
+    });
   },
   methods: {
     async fetchPokemonInfo() {
       try {
-        const response = await axios.get(this.pokemon.url);
+        const response = await axios.get(this.pokemonUrl);
         this.pokemonInfo = response.data;
       } catch (error) {
         console.log(error);
       }
     },
+    async setFavPokemon() {
+      const collection = doc(db, "fav-pokemon", auth.currentUser.uid);
+
+      if (this.currentFavs) {
+        await updateDoc(collection, {
+          pokemonInfo: arrayUnion(this.pokemonUrl),
+        });
+      } else {
+        await setDoc(collection, {
+          pokemonInfo: [this.pokemonUrl],
+        });
+      }
+    },
+    removeFavPokemon() {
+      this.deleteFavPokemon().then((isFav) => (this.isFav = isFav));
+    },
   },
-  computed: {},
 };
 </script>
 

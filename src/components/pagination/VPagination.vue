@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <section class="pagination">
     <button
       :disabled="!prev"
       @click="$emit('pagination', prev)"
@@ -10,8 +10,9 @@
     <button :disabled="!next" @click="$emit('pagination', next)">
       <ChevronArrow />
     </button>
-  </div>
+  </section>
 </template>
+
 <script>
 import ChevronArrow from "../../assets/icons/ChevronArrow.vue";
 export default {
@@ -19,6 +20,7 @@ export default {
   props: ["next", "prev"],
 };
 </script>
+
 <style scoped>
 .pagination {
   display: flex;

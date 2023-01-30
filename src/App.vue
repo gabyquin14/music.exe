@@ -11,7 +11,13 @@ export default {
 <template>
   <div class="app">
     <NavBar />
-    <RouterView />
+
+    <RouterView v-slot="{ Component }">
+      <Transition :name="$route.meta.transition || 'fade'" mode="out-in">
+        <Component :is="Component" />
+      </Transition>
+    </RouterView>
+
     <VFooter />
   </div>
 </template>
@@ -22,5 +28,7 @@ export default {
   justify-content: space-between;
   flex-direction: column;
   height: 100vh;
+  overflow-x: hidden;
+  width: 100vw;
 }
 </style>

@@ -62,7 +62,6 @@ export default {
           `https://pokeapi.co/api/v2/pokemon/${this.id}`
         );
         this.pokemonDetail = response.data;
-        console.log(response.data, "domo");
       } catch (error) {
         console.log(error);
       }

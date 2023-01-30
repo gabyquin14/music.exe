@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import AboutView from "../views/AboutView.vue";
+import FavoritesView from "../views/FavoritesView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
@@ -14,11 +14,17 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginView,
+      meta: {
+        transition: "fade",
+      },
     },
     {
       path: "/register",
       name: "register",
       component: RegisterView,
+      meta: {
+        transition: "fade",
+      },
     },
     {
       path: "/",
@@ -26,6 +32,7 @@ const router = createRouter({
       component: HomeView,
       meta: {
         requiresAuth: true,
+        transition: "fade",
       },
     },
     {
@@ -35,14 +42,16 @@ const router = createRouter({
       props: true,
       meta: {
         requiresAuth: true,
+        transition: "fade",
       },
     },
     {
       path: "/about",
       name: "about",
-      component: AboutView,
+      component: FavoritesView,
       meta: {
         requiresAuth: true,
+        transition: "fade",
       },
     },
     //Not found page
@@ -50,6 +59,9 @@ const router = createRouter({
       path: "/:catchAll(.*)",
       name: "notFound",
       component: NotFoundView,
+      meta: {
+        transition: "fade",
+      },
     },
   ],
 });
@@ -73,7 +85,7 @@ router.beforeEach(async (to, from, next) => {
       next();
     } else {
       console.log("you don't have access");
-      next("/");
+      next("/login");
     }
   } else {
     next();

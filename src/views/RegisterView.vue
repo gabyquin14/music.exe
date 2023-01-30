@@ -1,48 +1,5 @@
-<script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-export default {
-  data() {
-    return {
-      isLogin: true,
-      email: "",
-      password: "",
-      showCredentials: false,
-      errorMessage: "",
-    };
-  },
-  methods: {
-    register() {
-      createUserWithEmailAndPassword(getAuth(), this.email, this.password)
-        .then((data) => {
-          this.$router.push({ name: "home" });
-        })
-        .catch((error) => {
-          switch (error.code) {
-            case "auth/invalid-email":
-              console.log("easdasdrrorr");
-              this.errorMessage = "Invalid email";
-              break;
-
-            case "auth/wrong-password":
-              this.errorMessage = "Incorrect Password";
-              break;
-
-            case "auth/user-not-found":
-              this.errorMessage = "No account with that email was found";
-              break;
-
-            default:
-              this.errorMessage = "Email or password is incorrect";
-              break;
-          }
-        });
-    },
-  },
-};
-</script>
-
 <template>
-  <main>
+  <section>
     <form v-if="isLogin" @submit.prevent="register" class="login">
       <h1>Sign in</h1>
       <h3>
@@ -73,11 +30,55 @@ export default {
         </RouterLink>
       </div>
     </form>
-  </main>
+  </section>
 </template>
 
+<script>
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firestore";
+import { doc, setDoc } from "firebase/firestore";
+export default {
+  data() {
+    return {
+      isLogin: true,
+      email: "",
+      password: "",
+      showCredentials: false,
+      errorMessage: "",
+    };
+  },
+  methods: {
+    register() {
+      createUserWithEmailAndPassword(auth, this.email, this.password)
+        .then((userCredential) => {
+          this.$router.push({ name: "home" });
+        })
+        .catch((error) => {
+          switch (error.code) {
+            case "auth/invalid-email":
+              this.errorMessage = "Invalid email";
+              break;
+
+            case "auth/wrong-password":
+              this.errorMessage = "Incorrect Password";
+              break;
+
+            case "auth/user-not-found":
+              this.errorMessage = "No account with that email was found";
+              break;
+
+            default:
+              this.errorMessage = "Email or password is incorrect";
+              break;
+          }
+        });
+    },
+  },
+};
+</script>
+
 <style scoped>
-main {
+section {
   display: flex;
   justify-content: center;
   align-items: center;

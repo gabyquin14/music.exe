@@ -73,3 +73,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-2rem);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
