@@ -56,7 +56,7 @@ const router = createRouter({
     },
     //Not found page
     {
-      path: "/:catchAll(.*)",
+      path: "/:pathMatch(.*)",
       name: "notFound",
       component: NotFoundView,
       meta: {
