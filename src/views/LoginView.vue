@@ -50,7 +50,6 @@ export default {
     register() {
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
-          // console.log(userCredential.user);
           this.$router.push({ name: "home" });
         })
         .catch((error) => {
@@ -78,66 +77,5 @@ export default {
 </script>
 
 <style scoped>
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.login {
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  row-gap: 2rem;
-  border-radius: 1rem;
-  width: 30vw;
-  height: 50vh;
-  color: #6d4a50;
-  padding: 4rem;
-}
-h1 {
-  font-size: 5rem;
-  margin-bottom: 1rem;
-}
-h3 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-input {
-  outline: none;
-  border: none;
-  width: 100%;
-  border-bottom: 0.2rem solid pink;
-  padding-bottom: 0.5rem;
-  font-size: 1.6rem;
-}
-input.active {
-  border-bottom: 0.2rem solid rgba(255, 192, 203, 0.758);
-}
-button {
-  color: #6d4a50;
-  background-color: transparent;
-  border-radius: 1rem;
-  border: 0.2rem solid #eca7b2;
-  padding: 1rem 2rem;
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-span {
-  font-size: 1.6rem;
-}
-.form-question {
-  display: flex;
-  align-items: center;
-  column-gap: 2rem;
-}
-@media screen and (max-width: 1000px) {
-  .login {
-    width: 65%;
-    height: fit-content;
-  }
-}
+@import "@/assets/auth.css";
 </style>

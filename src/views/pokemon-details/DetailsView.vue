@@ -42,8 +42,8 @@
 
 <script>
 import axios from "axios";
-import ProfileImage from "../../components/profile image/ProfileImage.vue";
-import ChevronArrow from "../../assets/icons/ChevronArrow.vue";
+import ProfileImage from "@/components/profile image/ProfileImage.vue";
+import ChevronArrow from "@/assets/icons/ChevronArrow.vue";
 export default {
   components: { ProfileImage, ChevronArrow },
   props: ["id"],

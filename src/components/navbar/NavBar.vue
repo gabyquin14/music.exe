@@ -1,4 +1,18 @@
-<!-- eslint-disable vue/multi-word-component-names -->
+<template>
+  <main>
+    <nav>
+      <ul>
+        <li>Pokemons</li>
+        <li><RouterLink :to="{ name: 'home' }">Home</RouterLink></li>
+        <li><RouterLink :to="{ name: 'about' }">Favorites</RouterLink></li>
+        <li @click="handleLogOut" v-if="isLoggedIn">
+          <RouterLink :to="{ name: 'login' }">Log out</RouterLink>
+        </li>
+      </ul>
+    </nav>
+  </main>
+</template>
+
 <script>
 import { RouterLink } from "vue-router";
 import { getAuth, onAuthStateChanged, signOut } from "@firebase/auth";
@@ -25,21 +39,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <main>
-    <nav>
-      <ul>
-        <li>Pokemons</li>
-        <li><RouterLink :to="{ name: 'home' }">Home</RouterLink></li>
-        <li><RouterLink :to="{ name: 'about' }">Favorites</RouterLink></li>
-        <li @click="handleLogOut" v-if="isLoggedIn">
-          <RouterLink :to="{ name: 'login' }">Log out</RouterLink>
-        </li>
-      </ul>
-    </nav>
-  </main>
-</template>
 
 <style scoped>
 nav {
