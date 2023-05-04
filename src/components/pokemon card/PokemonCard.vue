@@ -128,7 +128,7 @@ export default {
 .card-title {
   margin: auto;
   padding: 0 3rem;
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 500;
   color: #6d4a50;
   text-transform: capitalize;
@@ -136,5 +136,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.card-title svg {
+  min-width: 2.6rem;
+  min-height: 2.6rem;
 }
 </style>
