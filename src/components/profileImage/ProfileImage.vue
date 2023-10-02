@@ -15,8 +15,8 @@ export default {
 .details-profile-photo {
   background: linear-gradient(
       0deg,
-      rgba(255, 0, 149, 0.2),
-      rgba(255, 0, 150, 0.2)
+      rgba(145, 172, 154, 0.2),
+      rgba(145, 172, 154, 0.2)
     ),
     url("../../assets/images/brick-wall.webp");
   background-position: center;

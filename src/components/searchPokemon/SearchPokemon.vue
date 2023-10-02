@@ -1,6 +1,11 @@
 <template>
   <div class="search">
-    <input type="text" placeholder="Search for a pokemon" v-model="search" />
+    <input
+      type="text"
+      placeholder="Search for a pokemon"
+      v-model="search"
+      v-on:keyup.enter="searchPokemon"
+    />
     <div class="search-buttons">
       <button @click="searchPokemon">Search</button>
       <button @click="clearSearch">Clear</button>
@@ -25,6 +30,7 @@ export default {
           );
           this.$emit("pokemonSearch", response.data);
         } catch (error) {
+          this.$router.push("/not-found");
           console.log(error);
         }
     },

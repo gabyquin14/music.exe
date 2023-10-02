@@ -22,9 +22,9 @@
 
 <script>
 import axios from "axios";
-import PokemonCard from "../components/pokemon card/PokemonCard.vue";
+import PokemonCard from "../components/pokemonCard/PokemonCard.vue";
 import VPagination from "../components/pagination/VPagination.vue";
-import SearchPokemon from "../components/search pokemon/SearchPokemon.vue";
+import SearchPokemon from "../components/searchPokemon/SearchPokemon.vue";
 export default {
   components: { PokemonCard, VPagination, SearchPokemon },
   data() {

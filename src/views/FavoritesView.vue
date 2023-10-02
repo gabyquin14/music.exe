@@ -11,7 +11,7 @@
 
 <script>
 import { getDoc, doc, onSnapshot } from "firebase/firestore";
-import PokemonCard from "../components/pokemon card/PokemonCard.vue";
+import PokemonCard from "../components/pokemonCard/PokemonCard.vue";
 import { db, auth } from "@/firestore";
 import mixins from "@/helpers/helper.js";
 export default {

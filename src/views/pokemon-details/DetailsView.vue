@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="details-section">
     <RouterLink :to="{ name: 'home' }">
       <button class="go-back-button">
         <ChevronArrow />
@@ -25,7 +25,8 @@
           <li>
             <h3>Stats</h3>
             <span v-for="(stats, i) in pokemonDetail.stats" :key="i">
-              {{ stats.stat.name }} : {{ stats.base_stat }}
+              <span class="stat-name">{{ stats.stat.name }}</span> :
+              {{ stats.base_stat }}
             </span>
           </li>
           <li>
@@ -42,7 +43,7 @@
 
 <script>
 import axios from "axios";
-import ProfileImage from "@/components/profile image/ProfileImage.vue";
+import ProfileImage from "@/components/profileImage/ProfileImage.vue";
 import ChevronArrow from "@/assets/icons/ChevronArrow.vue";
 export default {
   components: { ProfileImage, ChevronArrow },
@@ -71,16 +72,19 @@ export default {
 </script>
 
 <style scoped>
+.details-section {
+  margin-bottom: 2rem;
+}
 .go-back-button {
   background-color: transparent;
-  color: #ad5b68;
+  color: var(--opaque-green);
   border: none;
   outline: none;
   display: flex;
   align-items: baseline;
   column-gap: 1rem;
-  margin-left: 10%;
-  margin-bottom: 3rem;
+  margin: 2rem auto;
+  cursor: pointer;
 }
 .go-back-button span {
   font-size: 2rem;
@@ -91,14 +95,12 @@ export default {
 }
 .details {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   column-gap: 6rem;
   background-color: rgba(255, 255, 255, 0.82);
-  color: #6d4a50;
-  width: 50vw;
-  height: 60vh;
-  margin: auto;
+  color: var(--dark-text);
   padding: 6rem;
 }
 
@@ -107,6 +109,7 @@ h1 {
   font-weight: 600;
   text-transform: capitalize;
   margin-bottom: 3rem;
+  text-align: center;
 }
 ul {
   display: grid;
@@ -127,28 +130,30 @@ ul li {
 }
 ul li h3 {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 ul li span {
   font-size: 1.6rem;
 }
+ul li .stat-name {
+  font-weight: 500;
+}
 
-@media screen and (max-width: 1400px) {
+@media screen and (min-width: 600px) {
   .details {
     width: 70vw;
+    margin: auto;
   }
 }
-@media screen and (max-width: 900px) {
+
+@media screen and (min-width: 900px) {
   .details {
-    width: 90vw;
-    height: 100%;
-    flex-direction: column;
-    margin: 10rem auto 4rem;
+    flex-direction: row;
   }
-  h1 {
-    font-size: 3rem;
-    text-align: center;
-    margin-top: 2rem;
+}
+@media screen and (min-width: 1100px) {
+  .details {
+    width: 60vw;
   }
 }
 </style>
