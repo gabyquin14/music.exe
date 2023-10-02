@@ -10,7 +10,7 @@
     fill-rule="evenodd"
     clip-rule="evenodd"
     viewBox="0 0 298 511.93"
-    fill="#ad5b68"
+    fill="#f0f5f5"
   >
     <path
       fill-rule="nonzero"

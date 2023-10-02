@@ -20,7 +20,11 @@
         required
         v-model="password"
       />
-      <span>{{ errorMessage }}</span>
+      <span
+        class="error-message"
+        :style="{ display: errorMessage ? 'block' : 'none' }"
+        >{{ errorMessage }}</span
+      >
       <button>Log in</button>
 
       <div class="form-question">

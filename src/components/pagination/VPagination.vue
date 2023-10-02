@@ -3,11 +3,15 @@
     <button
       :disabled="!prev"
       @click="$emit('pagination', prev)"
-      class="pagination-left-arrow"
+      class="nav-button pagination-left-arrow"
     >
       <ChevronArrow />
     </button>
-    <button :disabled="!next" @click="$emit('pagination', next)">
+    <button
+      :disabled="!next"
+      @click="$emit('pagination', next)"
+      class="nav-button"
+    >
       <ChevronArrow />
     </button>
   </section>
@@ -26,9 +30,9 @@ export default {
   display: flex;
   column-gap: 2rem;
 }
-button {
-  background-color: #eca7b2;
-  color: #f2d2d7b9;
+.nav-button {
+  background-color: var(--light-green);
+  color: var(--light-bg) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,9 +42,10 @@ button {
   border: none;
   cursor: pointer;
 }
-button:disabled {
-  background-color: #d5a7af;
+.nav-button:disabled {
+  background-color: var(--opaque-green);
   cursor: not-allowed;
+  color: var(--light-bg);
 }
 .pagination-left-arrow svg {
   transform: rotate(180deg);

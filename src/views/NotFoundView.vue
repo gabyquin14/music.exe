@@ -11,7 +11,7 @@ section {
   justify-content: center;
   align-items: center;
   column-gap: 2rem;
-  color: #6d4a50;
+  color: var(--opaque-green);
 }
 h2 {
   font-size: 5rem;

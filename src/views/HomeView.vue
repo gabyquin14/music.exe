@@ -68,7 +68,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   row-gap: 4rem;
-  margin: 4rem auto 0;
+  margin: 1rem auto 0;
   padding: 4rem;
   width: 100%;
 }
@@ -84,7 +84,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   column-gap: 6rem;
+  row-gap: 2rem;
   width: 40%;
+}
+
+@media screen and (min-width: 600px) {
+  .home-nav {
+    flex-direction: row;
+  }
 }
 </style>

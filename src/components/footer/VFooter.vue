@@ -9,9 +9,15 @@ footer {
   padding: 1rem;
   display: flex;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 500;
-  background-color: #eca7b2;
-  color: #6d4a50;
+  background-color: var(--opaque-green);
+  color: var(--light-bg);
+}
+
+@media screen and (min-width: 500px) {
+  footer {
+    font-size: 1.6rem;
+  }
 }
 </style>

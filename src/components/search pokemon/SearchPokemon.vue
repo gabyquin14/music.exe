@@ -1,8 +1,10 @@
 <template>
   <div class="search">
     <input type="text" placeholder="Search for a pokemon" v-model="search" />
-    <button @click="searchPokemon">Search</button>
-    <button @click="clearSearch">Clear</button>
+    <div class="search-buttons">
+      <button @click="searchPokemon">Search</button>
+      <button @click="clearSearch">Clear</button>
+    </div>
   </div>
 </template>
 
@@ -37,24 +39,39 @@ export default {
 <style scoped>
 .search {
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
   column-gap: 2rem;
+}
+.search-buttons {
+  display: flex;
+  gap: 2rem;
+  margin: auto;
 }
 input {
   outline: none;
   border: none;
   width: 100%;
+  min-width: 20rem;
   background-color: transparent;
-  border-bottom: 0.3rem solid #ed9ca9c1;
+  border-bottom: 0.3rem solid var(--opaque-green);
   padding-bottom: 0.5rem;
   font-size: 1.6rem;
+  color: var(--dark-text);
 }
 button {
-  color: #6d4a50;
+  color: var(--dark-text);
   background-color: transparent;
   border-radius: 1rem;
-  border: 0.2rem solid #eca7b2;
-  padding: 1rem 2rem;
+  border: 0.2rem solid var(--opaque-green);
+  padding: 0.5rem 1.5rem;
   font-size: 1.6rem;
   cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .search {
+    flex-direction: row;
+  }
 }
 </style>

@@ -20,7 +20,11 @@
         required
         v-model="password"
       />
-      <span>{{ errorMessage }}</span>
+      <span
+        class="error-message"
+        :style="{ display: errorMessage ? 'block' : 'none' }"
+        >{{ errorMessage }}</span
+      >
       <button>Sign in</button>
 
       <div class="form-question">
@@ -34,9 +38,8 @@
 </template>
 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firestore";
-import { doc, setDoc } from "firebase/firestore";
 export default {
   data() {
     return {
