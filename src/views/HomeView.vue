@@ -11,8 +11,10 @@
         :prev="pokemons.previous"
       />
     </div>
-
-    <div class="pokemon-display" v-if="pokemons.results">
+    <div v-if="loading">
+      <img src="../assets/images/loading.gif" alt="" />
+    </div>
+    <div class="pokemon-display" v-if="pokemons.results.length > 0">
       <div v-for="pokemon in pokemons.results" :key="pokemon.name">
         <PokemonCard :pokemon="pokemon" :pokemonUrl="pokemon.url" />
       </div>
@@ -30,6 +32,7 @@ export default {
   data() {
     return {
       pokemons: [],
+      loading: false,
     };
   },
   async created() {
@@ -37,13 +40,15 @@ export default {
   },
   methods: {
     async fetchPokemon() {
+      this.loading = true;
       try {
         const response = await axios.get(
           "https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0"
         );
         this.pokemons = response.data;
+        this.loading = false;
       } catch (error) {
-        console.log(error);
+        this.$router.push("/not-found");
       }
     },
     async fetchPaginationPokemon(url) {
@@ -51,7 +56,7 @@ export default {
         const response = await axios.get(url);
         this.pokemons = response.data;
       } catch (error) {
-        console.log(error);
+        this.$router.push("/not-found");
       }
     },
   },
