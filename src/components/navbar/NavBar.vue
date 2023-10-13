@@ -116,6 +116,7 @@ nav .hamburger-menu {
   position: absolute;
   top: 3rem;
   right: 0;
+  z-index: 2;
   padding: 2rem;
   background-color: var(--opaque-green);
   color: var(--light-bg);

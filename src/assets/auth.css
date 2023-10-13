@@ -15,7 +15,7 @@ section {
   width: 100%;
   color: var(--light-bg);
   padding: 2rem;
-  margin: 2rem;
+  margin: 0 2rem;
   font-size: 1.6rem;
 }
 
